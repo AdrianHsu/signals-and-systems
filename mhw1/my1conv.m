@@ -19,4 +19,4 @@ for n = 1:MAX_RANGE
     y(1, n) = SUM;
 end
 
-plot(y);
+stem(y);

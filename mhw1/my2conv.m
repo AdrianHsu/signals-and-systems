@@ -15,4 +15,4 @@ for i = 1:MAX_RANGE
     end
 end
 y = m * x2';
-plot(y);
+stem(y);
