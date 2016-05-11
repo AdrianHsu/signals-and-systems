@@ -22,12 +22,13 @@ for i = 1:N
 end
 
 % (a)
-
-% plot(n, x), xlabel('n'), ylabel('x[n]'), title('(x[n] - n) Graph'), grid on;
+figure;
+plot(n, x);
 
 % (b)
 X = fft(x, N);
-% plot(n, fftshift(abs(X)));
+figure;
+plot(n, fftshift(abs(X)));
 
 % (c)
 K = 16;
@@ -35,7 +36,7 @@ N1_ = K * N1;
 N_ = (2 * N1_) + 1;
 n_ = -(N1_):1:(N1_);
 t_ = n_ * Ts;
-% Sol1. 
+% Sol1.
 % x_ = sinc(t_);
 % Sol2.
 x_(1:N_) = 0;
@@ -47,8 +48,10 @@ for i = 1:N_
    end
 end
 
-% plot(n_, x_), xlabel('n'), ylabel('x[n]'), title('(x[n] - n) Graph'), grid on;
+figure;
+plot(n_, x_);
 X_ = fft(x_, N_);
-% plot(n_, fftshift(abs(X_)));
+figure;
+plot(n_, fftshift(abs(X_)));
 
 
