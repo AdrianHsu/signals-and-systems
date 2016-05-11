@@ -10,12 +10,21 @@ t = n * Ts;
 
 % x = sinc(t)
 x(1:1001) = 0;
-for i = 1:1001
-   x(i) = sin(pi * t(i)) / (pi * t(i));
+for i = 1:N
+   x(1, i) = sin(pi * t(1, i)) / (pi * t(1, i));
+   
+   % find(isnan(x)) returns ans = 501
+   % i.e. x(1, 501) = NaN
+   if i == N1 + 1 % i == 501
+       x(1, i) = 1;
+   end
 end
 
 % (a) (10%) Plot x[n].
-plot(n, x);
+
+% plot(n, x), xlabel('n'), ylabel('x[n]'), title('(x[n] - n) Graph'), grid on;
+
 % (b) (20%) Plot the magnitude response of the DFT of x during [?N1,N1]. The zero
 % frequency should be centered in your plot. Observe the Gibbs phenomenon here.
-
+X = fft(x, N);
+plot(n, fftshift(abs(X)));
