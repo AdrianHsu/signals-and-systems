@@ -4,12 +4,13 @@ T = 100;
 N1 = 500;
 Ts = T / N; %Ts = 0.0999
 
-% n ? {?N1,?N1 +1, ¡P ¡P ¡P , 0, ¡P ¡P ¡P , N1 ? 1, N1}
 n = -N1:1:N1;
 t = n * Ts;
 
-% x = sinc(t)
-x(1:1001) = 0;
+% Sol1. 
+% x = sinc(t);
+% Sol2.
+x(1:N) = 0;
 for i = 1:N
    x(1, i) = sin(pi * t(1, i)) / (pi * t(1, i));
    
@@ -20,11 +21,34 @@ for i = 1:N
    end
 end
 
-% (a) (10%) Plot x[n].
+% (a)
 
 % plot(n, x), xlabel('n'), ylabel('x[n]'), title('(x[n] - n) Graph'), grid on;
 
-% (b) (20%) Plot the magnitude response of the DFT of x during [?N1,N1]. The zero
-% frequency should be centered in your plot. Observe the Gibbs phenomenon here.
+% (b)
 X = fft(x, N);
-plot(n, fftshift(abs(X)));
+% plot(n, fftshift(abs(X)));
+
+% (c)
+K = 16;
+N1_ = K * N1;
+N_ = (2 * N1_) + 1;
+n_ = -(N1_):1:(N1_);
+t_ = n_ * Ts;
+% Sol1. 
+% x_ = sinc(t_);
+% Sol2.
+x_(1:N_) = 0;
+for i = 1:N_
+   x_(1, i) = sin(pi * t_(1, i)) / (pi * t_(1, i));
+   
+   if i == N1_ + 1
+       x_(1, i) = 1;
+   end
+end
+
+% plot(n_, x_), xlabel('n'), ylabel('x[n]'), title('(x[n] - n) Graph'), grid on;
+X_ = fft(x_, N_);
+% plot(n_, fftshift(abs(X_)));
+
+
