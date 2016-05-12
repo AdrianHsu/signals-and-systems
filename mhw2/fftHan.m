@@ -40,4 +40,4 @@ plot(n, y);
 % (c)
 Y = fft(y, N);
 figure;
-plot(n, fftshift(abs(Y)));
+plot(n * 2 * pi* (1/N), fftshift(abs(Y)));
