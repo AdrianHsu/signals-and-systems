@@ -28,7 +28,7 @@ plot(n, x);
 % (b)
 X = fft(x, N);
 figure;
-plot(n, fftshift(abs(X)));
+plot(n * 2 * pi* (1/N)  , fftshift(abs(X)));
 
 % (c)
 K = 16;
@@ -52,6 +52,6 @@ figure;
 plot(n_, x_);
 X_ = fft(x_, N_);
 figure;
-plot(n_, fftshift(abs(X_)));
+plot(n_ * 2 * pi* (1/N_), fftshift(abs(X_)));
 
 
