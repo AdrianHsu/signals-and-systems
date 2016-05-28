@@ -19,6 +19,7 @@ fs = 0.99; % stopband
 % if Wn is a two-element vector. 
 % 'bandpass' is the default when Wn has two elements.
 [b2,a2] = butter((16 / 2), [fp fs], 'bandpass');
+
 y1=filter(b1,a1,x);
 plot(y1);
 y2=filter(b2,a2,x);
