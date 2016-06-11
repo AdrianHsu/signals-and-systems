@@ -16,6 +16,14 @@ a=conv(a1,a2);
 % 1. (15%) Find the inverse z-transform of (2). Please state the ROC.
 % r0, p0, k0
 
+h(1:100) = 0;
+h(1) = k;
+for i=0:99,
+    for j=1:4,
+        h(i+1) = h(i+1) + r0(j) * power(p0(j),i);
+    end
+end
+
 % 2. (20%) Find and plot the locations of poles and zeros.
 zplane(b,a);
 
@@ -43,14 +51,6 @@ plot(w2/pi,20*log(abs(f2)));
 % 6. (15%) Determine the impulse response of the system 
 % by obtaining the output for an input x[n] = £_[n] 
 % and compare it with the result of 1.
-
-h(1:100) = 0;
-h(1) = k;
-for i=0:99,
-    for j=1:4,
-        h(i+1) = h(i+1) + r0(j) * power(p0(j),i);
-    end
-end
 
 d(1:100) = 0;
 d(1) = 1;
